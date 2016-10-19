@@ -10,11 +10,12 @@ const TopicArn = 'arn:aws:sns:us-east-1:009775665146:snapshot-fetch-trigger';
 
 module.exports.register = (event, context, cb) => {
   const date = dateformat(new Date(), 'yyyy-mm-dd');
+  const word = 'MMD艦これ';
   const sns = new aws.SNS();
 
-  const publish = (date, page) => {
+  const publish = (word, date, page) => {
     return new Promise((resolve, reject) => {
-      const Message = JSON.stringify({ date, page});
+      const Message = JSON.stringify({ word, date, page});
 
       sns.publish({ Message, TopicArn }, function(err, res) {
         if (err) {
@@ -25,14 +26,14 @@ module.exports.register = (event, context, cb) => {
     });
   };
 
-  Promise.all(_.range(0, 50).map(i => publish(date, i + 1)))
+  Promise.all(_.range(0, 50).map(i => publish(word, date, i + 1)))
     .then(() => cb(null, { message: 'registered' }))
     .catch(err => cb(err, {}));
 };
 
 module.exports.fetch = (event, context, cb) => {
   const message = JSON.parse(event.Records[0].Sns.Message);
-  const search = sugoi.tag('MMD艦これ').page(message.page || 1);
+  const search = sugoi.tag(message.word).page(message.page || 1);
   const s3 = new aws.S3();
 
   return search.then(videos => {
