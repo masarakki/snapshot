@@ -51,6 +51,10 @@ functions:
     handler: handler.fetch
     events:
       - sns: snapshot-fetch-trigger
+  server:
+    handler: handler.server
+    events:
+      - http: GET {date}/search/tag
 
 #   you can add any of the following events
 #   events:
