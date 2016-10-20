@@ -50,7 +50,7 @@ functions:
   fetch:
     handler: handler.fetch
     events:
-      - sns: arn:aws:sns:us-east-1:009775665146:snapshot-fetch-trigger
+      - sns: snapshot-fetch-trigger
 
 #   you can add any of the following events
 #   events:
