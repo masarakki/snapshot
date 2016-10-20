@@ -14,6 +14,6 @@
     "request": "^2.75.0",
     "request-promise": "^4.1.1",
     "sprintf-js": "^1.0.3",
-    "sugoi-search": "^1.0.0"
+    "sugoi-search": "^1.1.0"
   }
 }
