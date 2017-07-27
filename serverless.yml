@@ -7,15 +7,19 @@
 # Just uncomment any of them to get that config option.
 #
 # For full config options, check the docs:
-#    v1.docs.serverless.com
+#    docs.serverless.com
 #
 # Happy Coding!
 
 service: snapshot
 
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+# frameworkVersion: "=X.X.X"
+
 provider:
   name: aws
-  runtime: nodejs4.3
+  runtime: nodejs6.10
   iamRoleStatements:
     - Effect: "Allow"
       Action:
@@ -28,19 +32,6 @@ provider:
       Action:
         - "sns:Publish"
       Resource: "arn:aws:sns:us-east-1:009775665146:snapshot-fetch-trigger"
-
-# you can overwrite defaults here
-#defaults:
-#  stage: dev
-#  region: us-east-1
-
-# you can add packaging information here
-#package:
-#  include:
-#    - include-me.js
-#  exclude:
-#    - exclude-me.js
-#  artifact: my-service-code.zip
 
 functions:
   register:
@@ -55,24 +46,3 @@ functions:
     handler: handler.server
     events:
       - http: GET {date}/search/tag
-
-#   you can add any of the following events
-#   events:
-#     - http:
-#         path: users/create
-#         method: get
-#     - s3: ${bucket}
-#     - schedule: rate(10 minutes)
-#     - sns: greeter-topic
-
-# you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
-#  Outputs:
-#     NewOutput:
-#       Description: "Description for the output"
-#       Value: "Some output value"
