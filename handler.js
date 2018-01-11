@@ -7,7 +7,7 @@ const dateformat = require('dateformat');
 const sprintf = require('sprintf-js').sprintf;
 const Bucket = 'snapshot-mmd-kancolle';
 const TopicArn = 'arn:aws:sns:us-east-1:009775665146:snapshot-fetch-trigger';
-const word = 'MMD艦これ';
+const word = 'MMD艦これ OR MMDアズールレーン OR MMDアズレン';
 
 module.exports.register = (event, context, cb) => {
   const date = dateformat(new Date(), 'yyyy-mm-dd');
