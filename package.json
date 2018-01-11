@@ -9,11 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dateformat": "^1.0.12",
-    "lodash": "^4.15.0",
-    "request": "^2.75.0",
-    "request-promise": "^4.1.1",
-    "sprintf-js": "^1.0.3",
-    "sugoi-search": "^1.1.0"
+    "dateformat": "^3.0.2",
+    "lodash": "^4.17.4",
+    "sprintf-js": "^1.1.1",
+    "sugoi-search": "^1.1.1"
   }
 }
