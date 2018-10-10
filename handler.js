@@ -58,7 +58,7 @@ module.exports.server = (event, context, cb) => {
     return {
       statusCode: 200,
       headers: {
-        'Access-Control-Allow-Origin': 'http://www.nicovideo.jp',
+        'Access-Control-Allow-Origin': 'https://www.nicovideo.jp',
         'Access-Control-Allow-Credentials': true
       },
       body: JSON.stringify({
